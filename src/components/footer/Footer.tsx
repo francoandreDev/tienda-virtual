@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./footer.css";
 
 export function Footer() {
@@ -16,7 +18,7 @@ export function Footer() {
                     <h4>Servicio al Cliente</h4>
                     <ul>
                         <li>
-                            <a href="/contacto">Contáctenos</a>
+                            <Link to="/contacto">Contáctenos</Link>
                         </li>
                     </ul>
                 </div>

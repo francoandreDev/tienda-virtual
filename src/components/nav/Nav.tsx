@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "preact/hooks";
 
 import "./nav.css";
@@ -25,13 +26,13 @@ export function Nav() {
             <div className={`navbar-links ${isOpen ? "active" : ""}`}>
                 <ul>
                     <li>
-                        <a href="/">Inicio</a>
+                        <Link to="/">Inicio</Link>
                     </li>
                     <li>
-                        <a href="/productos">Productos</a>
+                        <Link to="/productos">Productos</Link>
                     </li>
                     <li>
-                        <a href="/carrito">Carrito</a>
+                        <Link to="/carrito">Carrito</Link>
                     </li>
                 </ul>
             </div>

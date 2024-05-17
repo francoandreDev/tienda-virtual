@@ -4,6 +4,8 @@ import {
     CartPage,
     ProductDetailPage,
     ProductPage,
+    ErrorPage,
+    ContactoPage,
 } from "../pages/exports.ts";
 
 export const router = createBrowserRouter([
@@ -16,7 +18,7 @@ export const router = createBrowserRouter([
         element: <ProductPage />,
     },
     {
-        path: "/producto/:id",
+        path: "/productos:id",
         element: <ProductDetailPage />,
     },
     {
@@ -25,6 +27,10 @@ export const router = createBrowserRouter([
     },
     {
         path: "/contacto",
-        element: <>Contacto</>,
+        element: <ContactoPage />,
+    },
+    {
+        path: "*",
+        element: <ErrorPage />,
     },
 ]);
