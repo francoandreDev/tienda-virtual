@@ -12,7 +12,7 @@ export function Nav() {
     return (
         <nav className="navbar">
             <div className="brand-title">
-                <a href="/">Labiales Hermosos</a>
+                <a href="/">Labiales Bonita</a>
             </div>
             <div
                 className={`toggle-button ${isOpen ? "active" : ""}`}
