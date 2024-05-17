@@ -1,0 +1,109 @@
+/* Basic styles for the navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: var(--color-primary);
+    padding: 0 20px;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.navbar-links ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-links li {
+    padding: 0 15px;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Hamburger menu button */
+.toggle-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .navbar {
+        align-items: center;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        position: absolute;
+        top: 60px; /* Altura del navbar */
+        left: 0;
+        width: 100%;
+        background-color: var(
+            --color-primary
+        ); /* Ajusta el color de fondo según necesites */
+        /* Ajusta el espaciado interior según necesites */
+        transition: translate 0.3s ease;
+        padding-left: 1rem;
+        translate: 0 -100%;
+        z-index: -1;
+    }
+
+    .navbar-links.active {
+        padding-bottom: 10px;
+        translate: 0 0;
+        z-index: 10;
+    }
+
+    .navbar-links ul {
+        flex-direction: column;
+        align-items: center; /* Alinea los enlaces al centro */
+    }
+
+    .navbar-links ul li {
+        padding: 10px 0; /* Ajusta el espaciado entre enlaces según necesites */
+        width: 100%;
+    }
+
+    .toggle-button.active {
+        justify-content: center;
+        & > .bar:nth-child(2) {
+            display: none;
+        }
+
+        & > .bar:nth-child(1) {
+            translate: 0 1.5px;
+            rotate: 45deg;
+        }
+        & > .bar:nth-child(3) {
+            translate: 0 -1.5px;
+            rotate: -45deg;
+        }
+    }
+
+    .navbar-links.active {
+        height: auto;
+    }
+}

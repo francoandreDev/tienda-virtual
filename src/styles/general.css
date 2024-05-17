@@ -1,0 +1,44 @@
+:root {
+    --font-title: bold "Playfair Display", serif;
+    --font-subtitle: semibold "Raleway", sans-serif;
+    --font-text: normal "Lato", sans-serif;
+
+    --color-primary: #e91e63;
+    --color-secondary: #ff4081;
+    --color-auxiliary: #ffc1e3;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #f06292;
+        --color-secondary: #f48fb1;
+        --color-auxiliary: #ffe4ec;
+    }
+}
+
+h1,
+.title {
+    font-family: var(--font-title);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+.subtitle {
+    font-family: var(--font-subtitle);
+}
+
+p,
+span,
+a,
+li,
+.text {
+    font-family: var(--font-text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

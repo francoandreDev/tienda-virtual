@@ -1,0 +1,61 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    min-height: 100svh;
+}
+
+.app > * {
+    width: 100%;
+}
+
+.top-header {
+    position: sticky;
+    top: 0;
+}
+
+.bottom-footer {
+    position: sticky;
+    bottom: 0;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 60svh;
+
+    & > .title {
+        font-size: 2.75rem;
+    }
+
+    & > .subtitle {
+        font-size: 1.5rem;
+    }
+
+    & > .text {
+        font-size: 1rem;
+    }
+}
+
+.align-center {
+    text-align: center;
+    width: 100%;
+}
+
+.color-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.color-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+.color-accent {
+    color: var(--color-auxiliary);
+}
