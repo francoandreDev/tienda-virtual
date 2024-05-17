@@ -3,5 +3,6 @@ import { Loader } from "./loader/Loader.tsx";
 import { Nav } from "./nav/Nav.tsx";
 import { Footer } from "./footer/Footer.tsx";
 import { Banner } from "./banner/Banner.tsx";
+import { Catalogo } from "./catalogo/Catalogo.tsx";
 
-export { Nav, Footer, Loader, BackButton, Banner };
+export { Nav, Footer, Loader, BackButton, Banner, Catalogo };

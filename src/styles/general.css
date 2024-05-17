@@ -6,6 +6,9 @@
     --color-primary: #e91e63;
     --color-secondary: #ff4081;
     --color-auxiliary: #ffc1e3;
+
+    --color-shadow: #2121211a;
+    --color-shadow-hover: #21212133;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +16,9 @@
         --color-primary: #f06292;
         --color-secondary: #f48fb1;
         --color-auxiliary: #ffe4ec;
+
+        --color-shadow: #cfcfcf1a;
+        --color-shadow-hover: #cfcfcf33;
     }
 }
 

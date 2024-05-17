@@ -1,4 +1,5 @@
-import { BackButton, Banner, Footer, Nav } from "../../components/exports";
+import { BackButton, Banner, Catalogo, Footer, Nav } from "../../components/exports";
+import { productos } from "../../data/destacados/destacados";
 
 import "./home.css";
 
@@ -13,8 +14,9 @@ export function HomePage() {
                     <div className="back-button">
                         <BackButton />
                     </div>
-                    <h2 className="title align-center">Más Vendidos</h2>
                     <Banner />
+                    <h2 className="title align-center">Más Vendidos</h2>
+                    <Catalogo productos={productos} />
                 </div>
             </main>
             <Footer />
