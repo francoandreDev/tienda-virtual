@@ -21,6 +21,21 @@
     bottom: 0;
 }
 
+.back-button {
+    position: relative;
+    aspect-ratio: 1/1 !important;
+    border-radius: 50%;
+    & > * {
+        position: fixed;
+        top: 0;
+        z-index: 5;
+        width: 4rem;
+        aspect-ratio: 1/1;
+        border-radius: inherit;
+        translate: 5vw 14vh;
+    }
+}
+
 .page {
     display: flex;
     flex-direction: column;

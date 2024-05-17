@@ -9,9 +9,12 @@ export function Footer() {
                 <div className="footer-section">
                     <h4>Acerca de nosotros</h4>
                     <p>
-                        Somos una tienda líder en la venta de productos de
-                        maquillaje, ofreciendo una amplia gama de cosméticos de
-                        alta calidad y productos para el cuidado de la piel.
+                        Somos una empresa líder en la venta de labiales,
+                        ofreciendo una amplia gama de productos de alta calidad
+                        que realzan tu belleza. Nuestros labiales están
+                        formulados con ingredientes de primera clase para
+                        proporcionar un color duradero y un cuidado excepcional
+                        para tu belleza.
                     </p>
                 </div>
                 <div className="footer-section">

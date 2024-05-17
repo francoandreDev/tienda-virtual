@@ -1,4 +1,4 @@
-import { Footer, Nav } from "../../components/exports";
+import { BackButton, Footer, Nav } from "../../components/exports";
 
 import "./product.css";
 
@@ -9,7 +9,10 @@ export function ProductPage() {
                 <Nav />
             </header>
             <main>
-                <div className="page cart">
+                <div className="page products">
+                    <div className="back-button">
+                        <BackButton />
+                    </div>
                     <h2 className="title align-center">Productos</h2>
                 </div>
             </main>

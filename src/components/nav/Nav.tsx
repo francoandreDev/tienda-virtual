@@ -26,7 +26,7 @@ export function Nav() {
             <div className={`navbar-links ${isOpen ? "active" : ""}`}>
                 <ul>
                     <li>
-                        <Link to="/">Inicio</Link>
+                        <Link to="/">Más vendidos</Link>
                     </li>
                     <li>
                         <Link to="/productos">Productos</Link>
