@@ -14,7 +14,7 @@
 .top-header {
     position: sticky;
     top: 0;
-    z-index: 5;
+    z-index: 10;
 }
 .bottom-footer {
     position: static;
