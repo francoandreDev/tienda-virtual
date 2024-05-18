@@ -32,7 +32,17 @@ export function ContactoPage() {
 
     function handleSubmit(e: h.JSX.TargetedEvent<HTMLFormElement, Event>) {
         e.preventDefault();
-        console.log(formData);
+
+        // Guardar los datos en el Session Storage
+        const savedData = sessionStorage.getItem("formData");
+        let formDataArray: FormData[] = [];
+        if (savedData) {
+            formDataArray = JSON.parse(savedData);
+        }
+        formDataArray.push(formData);
+        sessionStorage.setItem("formData", JSON.stringify(formDataArray));
+
+        // Limpiar el formulario después de enviar
         setFormData({
             firstName: "",
             lastName: "",
@@ -40,6 +50,7 @@ export function ContactoPage() {
             phone: "",
             cv: null,
         });
+
         alert("Formulario enviado");
     }
 
