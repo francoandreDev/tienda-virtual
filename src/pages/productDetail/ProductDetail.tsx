@@ -1,4 +1,4 @@
-import { BackButton, Footer, Nav } from "../../components/exports";
+import { BackButton, Footer, Nav, ShowDetails } from "../../components/exports";
 
 import "./productDetail.css";
 
@@ -16,6 +16,7 @@ export function ProductDetailPage() {
                     <h2 className="title align-center">
                         Detalles del Producto
                     </h2>
+                    <ShowDetails />
                 </div>
             </main>
             <Footer />

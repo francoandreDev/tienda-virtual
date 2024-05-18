@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import "./catalogo.css";
 
 export type Producto = {
@@ -14,6 +16,12 @@ type ProductosProps = {
 };
 
 export function Catalogo({ productos }: ProductosProps) {
+    const navigate = useNavigate();
+
+    function handleButtonClick(id: number) {
+        navigate("/productos/" + id);
+    }
+
     return (
         <div className="catalogo">
             {productos.map((p) => (
@@ -25,25 +33,14 @@ export function Catalogo({ productos }: ProductosProps) {
                             className="image"
                         />
                         <h3 className="subtitle align-center">{p.name}</h3>
-                        <p className="description align-center">
-                            {p.description}
-                        </p>
                         <span className="flex-space">
-                            <span className="flex">
-                                <input
-                                    placeholder="0"
-                                    value="0"
-                                    type="number"
-                                    name={p.id + "cantidad"}
-                                    id=""
-                                    className={"quantity"}
-                                />
-                                <p className="stock align-center">/{p.stock}</p>
-                            </span>
-                            <p className="price">S/. {p.price}</p>
+                            <p className="price align-center">S/. {p.price}</p>
                         </span>
-                        <button className="button rounded add-cart">
-                            Añadir al Carrito
+                        <button
+                            className="button rounded add-cart"
+                            onClick={() => handleButtonClick(p.id)}
+                        >
+                            Ver Detalles
                         </button>
                     </div>
                 </div>
