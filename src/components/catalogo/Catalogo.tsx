@@ -20,7 +20,7 @@ export function Catalogo({ productos }: ProductosProps) {
                 <div className={"card"} key={p.id}>
                     <div className="layout-card">
                         <img
-                            src={"/src/assets/productos/" + p.img}
+                            src={"/productos/" + p.img}
                             alt={p.name}
                             className="image"
                         />
