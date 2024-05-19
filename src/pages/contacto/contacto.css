@@ -58,6 +58,11 @@ label {
     translate: 2ch 80%;
 }
 
+.form-group:has(input:focus-within) > label.file-input-label {
+    translate: 0 0;
+    color: var(--color-auxiliary);
+}
+
 input:focus-within {
     outline: 1px solid var(--color-primary);
 }
@@ -66,8 +71,34 @@ input:focus-within {
     margin-top: 2.5rem;
 }
 
-input[type="file"] {
-    display: none;
+.file-input-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.file-input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.file-input-label:hover {
+    background-color: var(--color-secondary);
 }
 
 .button {

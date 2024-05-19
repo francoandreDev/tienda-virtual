@@ -21,28 +21,45 @@ export function ContactoPage() {
         cv: null,
     });
 
-    function handleChange(e: h.JSX.TargetedEvent<HTMLInputElement, Event>) {
-        const { name, value, files } = e.currentTarget;
-        if (name === "cv" && files) {
-            setFormData((prev) => ({ ...prev, [name]: files[0] }));
-        } else {
-            setFormData((prev) => ({ ...prev, [name]: value }));
-        }
-    }
+    const handleInputChange = (e: any) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
 
-    function handleSubmit(e: h.JSX.TargetedEvent<HTMLFormElement, Event>) {
+    const handleFileChange = (e: any) => {
+        const selectedFile = e.target.files[0];
+        setFormData({
+            ...formData,
+            cv: selectedFile,
+        });
+    };
+
+    const handleSubmit = (e: any) => {
         e.preventDefault();
+        // Si necesitas guardar el CV en el sessionStorage, puedes hacerlo aquí
+        if (formData.cv) {
+            const reader = new FileReader();
 
-        // Guardar los datos en el Session Storage
-        const savedData = sessionStorage.getItem("formData");
-        let formDataArray: FormData[] = [];
-        if (savedData) {
-            formDataArray = JSON.parse(savedData);
+            reader.onload = () => {
+                const base64File = reader.result?.toString().split(",")[1];
+                if (base64File) {
+                    const formDataWithCV = {
+                        ...formData,
+                        cv: base64File,
+                    };
+                    sessionStorage.setItem(
+                        "formData",
+                        JSON.stringify(formDataWithCV)
+                    );
+                }
+            };
+
+            reader.readAsDataURL(formData.cv);
         }
-        formDataArray.push(formData);
-        sessionStorage.setItem("formData", JSON.stringify(formDataArray));
-
-        // Limpiar el formulario después de enviar
+        alert("Gracias por contactarnos!");
         setFormData({
             firstName: "",
             lastName: "",
@@ -50,74 +67,71 @@ export function ContactoPage() {
             phone: "",
             cv: null,
         });
-
-        alert("Formulario enviado");
-    }
+    };
 
     return (
         <div className="page contact-page">
             <h1 className="title align-center">Contacto</h1>
             <form className="contact-form" onSubmit={handleSubmit}>
-                <span className="form-group">
+                <div className="form-group">
                     <label htmlFor="firstName">Nombres</label>
                     <input
                         type="text"
                         id="firstName"
                         name="firstName"
                         value={formData.firstName}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         required
                         placeholder="Nombres"
                         autoComplete="off"
                         autoFocus
                         tabindex={1}
                     />
-                </span>
-                <span className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="lastName">Apellidos</label>
                     <input
                         type="text"
                         id="lastName"
                         name="lastName"
                         value={formData.lastName}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         required
                         placeholder="Apellidos"
                         autoComplete="off"
                         tabindex={1}
                     />
-                </span>
-                <span className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="email">Correo</label>
                     <input
                         type="email"
                         id="email"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         required
                         placeholder="correo@dominio.com"
                         autoComplete="off"
                         tabindex={1}
                     />
-                </span>
-                <span className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="phone">Teléfono</label>
                     <input
                         type="tel"
                         id="phone"
                         name="phone"
                         value={formData.phone}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         required
                         placeholder="+51 999 999 999"
                         tabindex={1}
                         autoComplete="off"
                     />
-                </span>
-                <span className="form-group">
-                    <BackButton />
-                    <label htmlFor="cv" className="button rounded">
+                </div>
+                <div className="form-group file-input-container">
+                    <label htmlFor="cv" className="file-input-label">
                         Adjuntar CV
                     </label>
                     <input
@@ -125,16 +139,23 @@ export function ContactoPage() {
                         id="cv"
                         name="cv"
                         accept=".pdf,.doc,.docx"
-                        onChange={handleChange}
+                        onChange={handleFileChange}
+                        className="file-input"
+                        required
+                        tabindex={1}
                     />
+                </div>
+
+                <div className="form-group">
+                    <BackButton />
                     <button
                         type="submit"
                         className="button rounded"
-                        tabindex={1}
+                        tabindex={6}
                     >
                         Enviar Postulación
                     </button>
-                </span>
+                </div>
             </form>
         </div>
     );
