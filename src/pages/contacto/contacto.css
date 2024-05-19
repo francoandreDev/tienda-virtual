@@ -75,13 +75,13 @@ input:focus-within {
     position: relative;
     display: inline-block;
     margin-top: 10px;
+    overflow: clip;
 }
 
 .file-input {
     position: absolute;
     font-size: 100px;
-    right: 0;
-    top: 0;
+    inset: 0;
     opacity: 0;
     cursor: pointer;
 }
