@@ -6,6 +6,7 @@ import { Banner } from "./banner/Banner.tsx";
 import { Catalogo } from "./catalogo/Catalogo.tsx";
 import { ShowDetails } from "./showDetails/ShowDetails.tsx";
 import { Carrito } from "./cart/Cart.tsx";
+import { MissionVision } from "./mission-vision/MissionVision.tsx";
 
 export {
     Nav,
@@ -16,4 +17,5 @@ export {
     Catalogo,
     ShowDetails,
     Carrito,
+    MissionVision
 };

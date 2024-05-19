@@ -1,4 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
+import { Item } from "./Item";
 
 import "./cart.css";
 
@@ -36,7 +37,10 @@ export function Carrito() {
     if (cartItems.length === 0) {
         return (
             <div className="carrito">
-                <h3>No hay elementos en el carrito</h3>
+                <h3>
+                    <i class="fa-solid fa-ban"></i>No hay productos en el
+                    carrito
+                </h3>
             </div>
         );
     }
@@ -46,26 +50,25 @@ export function Carrito() {
             <h3>Tus Productos</h3>
             <ul className="cart-list">
                 {cartItems.map((item) => (
-                    <li key={item.id} className="cart-item">
-                        <img
-                            src={"/productos/" + item.img}
-                            alt={item.name}
-                            className="cart-item-img"
-                        />
-                        <div className="cart-item-details">
-                            <h4>{item.name}</h4>
-                            <p>Precio: S/. {item.price}</p>
-                            <p>Cantidad: {item.cantidad}</p>
-                        </div>
-                    </li>
+                    <Item
+                        key={item.id}
+                        item={item}
+                        cartItems={cartItems}
+                        setCartItems={setCartItems}
+                    />
                 ))}
             </ul>
-            <div className="cart-total">
-                <h4>Total: S/. {calculateTotal()}</h4>
-            </div>
-            <button className="button rounded pay-button" onClick={handlePay}>
-                Pagar
-            </button>
+            <span className="inline">
+                <div className="cart-total">
+                    <h4>S/. {calculateTotal()}</h4>
+                </div>
+                <button
+                    className="button rounded pay-button"
+                    onClick={handlePay}
+                >
+                    <i class="fa-regular fa-credit-card"></i> Pagar
+                </button>
+            </span>
         </div>
     );
 }

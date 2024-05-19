@@ -31,16 +31,28 @@ export function ShowDetails() {
             alert("La cantidad debe ser positiva y mayor que cero");
             return;
         }
+
         const currentCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
-        const updatedCart = [...currentCart, { ...product, cantidad }];
-        sessionStorage.setItem("cart", JSON.stringify(updatedCart));
-        alert(`${cantidad} ${product?.name}(s) añadido al carrito!`);
+        const productIndex = currentCart.findIndex(
+            (item: any) => item.id === product?.id
+        );
+
+        if (productIndex !== -1) {
+            currentCart[productIndex].cantidad += cantidad;
+        } else {
+            currentCart.push({ ...product, cantidad });
+        }
+
+        sessionStorage.setItem("cart", JSON.stringify(currentCart));
+        alert(`${cantidad} ${product?.name}(s) añadido(s) al carrito!`);
     }
 
     if (!product) {
         return (
             <div className="show-details">
-                <h3 className="title">Producto no encontrado</h3>
+                <h3 className="title">
+                    <i class="fa-solid fa-ban"></i>El producto no existe
+                </h3>
             </div>
         );
     }
@@ -55,7 +67,7 @@ export function ShowDetails() {
             />
             <p className="description">{product.description}</p>
             <span className="flex-space">
-                <p className="price">S/. {product.price}</p>
+                <p className="price">S/. {product.price * cantidad}</p>
                 <span className="stock">
                     <input
                         type="number"
@@ -72,7 +84,7 @@ export function ShowDetails() {
                 </span>
             </span>
             <button className="button rounded inline" onClick={handleAddToCart}>
-                <i className="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-cart-plus"></i>
                 <p>Añadir al carrito</p>
             </button>
         </div>

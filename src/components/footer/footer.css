@@ -3,28 +3,44 @@
     background-color: #333;
     color: white;
     padding: 20px 0;
-    padding-bottom: 0;
     text-align: center;
 }
 
 .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+}
+
+.footer-middle {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 0 20px;
+    padding: 20px 0;
 }
 
 .footer-section {
     flex: 1;
     margin: 20px;
-    min-width: 200px;
+    min-width: 250px;
 }
 
-.footer-section h4 {
+.footer-section h4,
+.footer-top h4 {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
+.footer-top p,
+.footer-top ul,
 .footer-section p,
 .footer-section ul {
     font-size: 0.9rem;
@@ -49,7 +65,20 @@
     color: #ff4081; /* Adjust this color to fit your theme */
 }
 
-.social-links a {
+.footer-section h4,
+.footer-top h4 {
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+}
+
+.social-links a,
+.link {
     display: inline-block;
     margin: 0 10px;
     color: white;
@@ -70,4 +99,35 @@
 .footer-bottom p {
     margin: 0;
     font-size: 0.8rem;
+}
+
+/* Styles for the mission and vision sections */
+.mission-vision {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.mission,
+.vision {
+    flex: 1 1 300px;
+    box-sizing: border-box;
+    max-width: 400px;
+    margin: 10px;
+}
+
+.mission h4,
+.vision h4 {
+    margin-bottom: 10px;
+}
+
+.mission p,
+.vision p {
+    margin: 0;
+}
+
+i {
+    margin-right: 8px;
 }

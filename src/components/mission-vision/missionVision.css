@@ -1,0 +1,21 @@
+.mission-vision {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.mission,
+.vision {
+    flex: 1 1 300px;
+    max-width: 400px;
+    margin: 10px;
+}
+
+.mission p,
+.vision p {
+    margin: 0;
+    margin-top: 7px;
+}

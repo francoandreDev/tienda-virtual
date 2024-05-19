@@ -13,7 +13,10 @@ export function Nav() {
     return (
         <nav className="navbar">
             <div className="brand-title">
-                <a href="/">Labiales Bonita</a>
+                <a href="/">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>Labiales
+                    Bonita
+                </a>
             </div>
             <div
                 className={`toggle-button ${isOpen ? "active" : ""}`}
@@ -26,13 +29,19 @@ export function Nav() {
             <div className={`navbar-links ${isOpen ? "active" : ""}`}>
                 <ul>
                     <li>
-                        <Link to="/">Más vendidos</Link>
+                        <Link to="/">
+                            <i class="fa-solid fa-fire"></i>Más vendidos
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/productos">Productos</Link>
+                        <Link to="/productos">
+                            <i class="fa-solid fa-bag-shopping"></i>Productos
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/carrito">Carrito</Link>
+                        <Link to="/carrito">
+                            <i class="fa-solid fa-cart-shopping"></i>Carrito
+                        </Link>
                     </li>
                 </ul>
             </div>
