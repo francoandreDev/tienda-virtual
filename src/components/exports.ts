@@ -1,3 +1,4 @@
+import { Filters } from "./filters/Filters.tsx";
 import { SearchBar } from "./searchBar/SearchBar.tsx";
 import { BackButton } from "./backButton/BackButton.tsx";
 import { Loader } from "./loader/Loader.tsx";
@@ -20,4 +21,5 @@ export {
     Cart,
     MissionVision,
     SearchBar,
+    Filters,
 };

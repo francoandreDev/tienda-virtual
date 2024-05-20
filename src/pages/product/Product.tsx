@@ -2,6 +2,7 @@ import { useState } from "preact/hooks";
 import {
     BackButton,
     Banner,
+    Filters,
     Footer,
     ListProducts,
     Nav,
@@ -34,6 +35,15 @@ export function ProductPage() {
                         <SearchBar
                             onSearch={handleSearch}
                             products={products}
+                        />
+                    </span>
+                    <span className="flex-center">
+                        <Filters
+                            onFilterChange={(criteria) =>
+                                setShowProducts(
+                                    filterProducts(products, criteria)
+                                )
+                            }
                         />
                     </span>
                     <ListProducts products={showProducts} />

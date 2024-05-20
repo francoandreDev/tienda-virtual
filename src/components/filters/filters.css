@@ -1,0 +1,61 @@
+/* filters.css */
+:root {
+    --border-color: #ccc;
+}
+
+.padding-left {
+    padding-left: 1rem;
+}
+
+.filter-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 1rem 0;
+    width: clamp(280px, 75%, 600px);
+    top: -3rem;
+}
+
+.filter-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.filters {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.4s ease;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0 1.1rem;
+    border-radius: 5px;
+    background-color: var(--base);
+}
+
+.filters.show {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.filters input[type="number"] {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: var(--base);
+    color: var(--color-primary);
+    transition: border-color 0.3s;
+    max-width: 12ch;
+    text-align: center;
+
+    &:focus {
+        border-color: var(--color-primary);
+        outline: none;
+    }
+}

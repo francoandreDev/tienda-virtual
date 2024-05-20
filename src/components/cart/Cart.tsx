@@ -49,7 +49,7 @@ export function Cart() {
                     />
                 ))}
             </ul>
-            <span className="inline">
+            <span className="flex-space">
                 <div className="cart-total">
                     <h4>S/. {calculateTotal()}</h4>
                 </div>

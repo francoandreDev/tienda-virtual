@@ -2,6 +2,7 @@ import { useState } from "preact/hooks";
 import {
     BackButton,
     Banner,
+    Filters,
     Footer,
     ListProducts,
     Nav,
@@ -36,6 +37,15 @@ export function BestSellerPage() {
                             products={filterProducts(products, {
                                 isBestSeller: true,
                             })}
+                        />
+                    </span>
+                    <span className="flex-center">
+                        <Filters
+                            onFilterChange={(criteria) =>
+                                setShowProducts(
+                                    filterProducts(products, criteria)
+                                )
+                            }
                         />
                     </span>
                     <ListProducts

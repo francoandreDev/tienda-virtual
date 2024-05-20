@@ -45,7 +45,11 @@ export function Item({
                         type="number"
                         value={item.stock}
                         min="0"
-                        onChange={handleQuantityChange}
+                        onChange={(e) => {
+                            e.currentTarget.value =
+                                e.currentTarget.value.replace(".", "");
+                            handleQuantityChange(e);
+                        }}
                     />
                 </div>
                 <button

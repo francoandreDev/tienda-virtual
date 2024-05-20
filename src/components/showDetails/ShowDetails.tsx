@@ -31,11 +31,8 @@ export function ShowDetails() {
             (item: any) => item.id === product?.id
         );
 
-        if (productIndex !== -1) {
-            currentCart[productIndex].stock += quantity;
-        } else {
-            currentCart.push({ ...product, stock: quantity });
-        }
+        if (productIndex !== -1) currentCart[productIndex].stock += quantity;
+        else currentCart.push({ ...product, stock: quantity });
 
         sessionStorage.setItem("cart", JSON.stringify(currentCart));
         alert(`${quantity} ${product?.name}(s) añadido(s) al carrito!`);
@@ -74,9 +71,12 @@ export function ShowDetails() {
                         type="number"
                         aria-label={"stock-" + product.id + "input"}
                         className={"quantity"}
-                        onChange={(e) =>
-                            setQuantity(Number(e.currentTarget.value))
-                        }
+                        onChange={(e) => {
+                            e.currentTarget.value.replace(".", "");
+                            setQuantity(
+                                Number(e.currentTarget.value.replace(/\D/g, ""))
+                            );
+                        }}
                         value={quantity}
                         min="1"
                         max={product.stock}
