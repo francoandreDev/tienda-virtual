@@ -1,10 +1,15 @@
 import { useState } from "preact/hooks";
-import { products } from "../../data/products";
 import { IProduct } from "../../data/typeProducts";
 
 import "./searchBar.css";
 
-export function SearchBar({ onSearch }: { onSearch: (query: string) => void }) {
+export function SearchBar({
+    onSearch,
+    products,
+}: {
+    onSearch: (query: string) => void;
+    products: IProduct[];
+}) {
     const [query, setQuery] = useState<string>("");
     const [suggestions, setSuggestions] = useState<IProduct[]>([]);
 

@@ -31,7 +31,10 @@ export function ProductPage() {
                     <Banner />
                     <h2 className="title align-center">Catálogo</h2>
                     <span className="flex-center">
-                        <SearchBar onSearch={handleSearch} />
+                        <SearchBar
+                            onSearch={handleSearch}
+                            products={products}
+                        />
                     </span>
                     <ListProducts products={showProducts} />
                 </div>
