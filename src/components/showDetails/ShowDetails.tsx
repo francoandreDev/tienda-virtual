@@ -49,11 +49,19 @@ export function ShowDetails() {
     return (
         <div className="show-details">
             <h3 className="title">{product.name}</h3>
-            <img
-                src={"/productos/" + product.img}
-                alt={product.name}
-                className="image"
-            />
+            <div class="relative">
+                <span className="flex icons absolute">
+                    {product.isBestSeller && <i class="fa-solid fa-fire"></i>}
+                    {product.isNewArrival && (
+                        <i class="fa-solid fa-bell-concierge"></i>
+                    )}
+                </span>
+                <img
+                    src={"/productos/" + product.img}
+                    alt={product.name}
+                    className="image"
+                />
+            </div>
             <p className="description">{product.description}</p>
             <span className="flex-space">
                 <p className="price">S/. {product.price * quantity}</p>
@@ -68,11 +76,15 @@ export function ShowDetails() {
                         value={quantity}
                         min="1"
                         max={product.stock}
+                        autoFocus
                     />
                     /{product.stock}
                 </span>
             </span>
-            <button className="button rounded inline" onClick={handleAddToCart}>
+            <button
+                className="button rounded inline full-width flex-center"
+                onClick={handleAddToCart}
+            >
                 <i class="fa-solid fa-cart-plus"></i>
                 <p>Añadir al carrito</p>
             </button>

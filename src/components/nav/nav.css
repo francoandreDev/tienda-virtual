@@ -60,6 +60,40 @@
 
     .toggle-button {
         display: flex;
+        position: relative;
+        top: -0.3rem;
+
+        & .bar {
+            position: absolute;
+        }
+
+        & .bar:nth-child(1) {
+            top: 0;
+        }
+
+        & .bar:nth-child(2) {
+            top: 50%;
+        }
+
+        & .bar:nth-child(3) {
+            top: 100%;
+        }
+    }
+
+    .toggle-button.active {
+        justify-content: center;
+        & > .bar:nth-child(2) {
+            display: none;
+        }
+
+        & > .bar:nth-child(1) {
+            translate: 0 0.7rem;
+            rotate: 45deg;
+        }
+        & > .bar:nth-child(3) {
+            translate: 0 -0.7rem;
+            rotate: -45deg;
+        }
     }
 
     .navbar-links {
@@ -67,10 +101,7 @@
         top: 60px; /* Altura del navbar */
         left: 0;
         width: 100%;
-        background-color: var(
-            --color-primary
-        ); /* Ajusta el color de fondo según necesites */
-        /* Ajusta el espaciado interior según necesites */
+        background-color: var(--color-primary);
         transition: translate 0.3s ease;
         padding-left: 1rem;
         translate: 0 -100%;
@@ -91,22 +122,6 @@
     .navbar-links ul li {
         padding: 10px 0; /* Ajusta el espaciado entre enlaces según necesites */
         width: 100%;
-    }
-
-    .toggle-button.active {
-        justify-content: center;
-        & > .bar:nth-child(2) {
-            display: none;
-        }
-
-        & > .bar:nth-child(1) {
-            translate: 0 1.5px;
-            rotate: 45deg;
-        }
-        & > .bar:nth-child(3) {
-            translate: 0 -1.5px;
-            rotate: -45deg;
-        }
     }
 
     .navbar-links.active {

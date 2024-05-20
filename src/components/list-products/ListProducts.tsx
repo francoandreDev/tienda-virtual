@@ -15,15 +15,17 @@ export function ListProducts({ products }: { products: IProduct[] }) {
             {products.map((p) => (
                 <div className={"card"} key={p.id}>
                     <div className="layout-card">
-                        <img
-                            src={"/productos/" + p.img}
-                            alt={p.name}
-                            className="image"
-                        />
+                        <div className="wrapper-image-price">
+                            <p className="price tag align-center">
+                                S/. {p.price}
+                            </p>
+                            <img
+                                src={"/productos/" + p.img}
+                                alt={p.name}
+                                className="image"
+                            />
+                        </div>
                         <h3 className="subtitle align-center">{p.name}</h3>
-                        <span className="flex-space">
-                            <p className="price align-center">S/. {p.price}</p>
-                        </span>
                         <button
                             className="button rounded add-cart"
                             onClick={() => handleButtonClick(p.id)}

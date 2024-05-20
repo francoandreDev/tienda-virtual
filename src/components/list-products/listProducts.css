@@ -17,6 +17,9 @@
     transition: translate 0.3s, box-shadow 0.2s;
     display: grid;
     place-items: center;
+    box-shadow: 20px 20px 60px
+            color-mix(in rgb, var(--color-auxiliary), var(--base)),
+        -20px -20px 60px var(--base);
 
     &:hover {
         translate: 0 -5px;
@@ -44,6 +47,7 @@
     text-wrap: balance;
     color: var(--color-primary);
     font-weight: bold;
+    translate: 0 1rem;
 }
 
 .price,
@@ -52,6 +56,24 @@
 .quantity {
     mix-blend-mode: difference;
     opacity: 0.7;
+}
+
+.wrapper-image-price {
+    position: relative;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    background-color: color-mix(in srgb, white 85%, var(--text));
+    border: -1px solid var(--color-secondary);
+    color: color-mix(in srgb, var(--color-secondary) 80%, var(--base));
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    mix-blend-mode: initial !important;
+    position: absolute;
+    bottom: 0;
+    translate: 0 1.5rem;
 }
 
 .description {

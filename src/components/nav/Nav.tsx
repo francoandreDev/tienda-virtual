@@ -36,7 +36,7 @@ export function Nav() {
                     </li>
                     <li>
                         <Link to="/nuevos-productos">
-                            <i class="fa-solid fa-bullhorn"></i>
+                            <i class="fa-solid fa-bell-concierge"></i>
                             <span className="text-link">Nuevos Productos</span>
                         </Link>
                     </li>
