@@ -1,21 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { IProduct } from "../../data/exports";
 
-import "./catalogo.css";
+import "./listProducts.css";
 
-export type Producto = {
-    id: number;
-    name: string;
-    price: number;
-    stock: number;
-    description: string;
-    img: string;
-};
-
-type ProductosProps = {
-    productos: Producto[];
-};
-
-export function Catalogo({ productos }: ProductosProps) {
+export function ListProducts({ products }: { products: IProduct[] }) {
     const navigate = useNavigate();
 
     function handleButtonClick(id: number) {
@@ -23,8 +11,8 @@ export function Catalogo({ productos }: ProductosProps) {
     }
 
     return (
-        <div className="catalogo">
-            {productos.map((p) => (
+        <div className="list-products">
+            {products.map((p) => (
                 <div className={"card"} key={p.id}>
                     <div className="layout-card">
                         <img

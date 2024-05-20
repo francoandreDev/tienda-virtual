@@ -1,13 +1,56 @@
-export type Producto = {
-    id: number;
-    name: string;
-    price: number;
-    stock: number;
-    description: string;
-    img: string;
-};
+import { IProduct, ISearchCriteria } from "./typeProducts";
 
-export const productos: Producto[] = [
+export function filterProducts(
+    products: IProduct[],
+    criteria: ISearchCriteria
+): IProduct[] {
+    return products.filter((product) => {
+        if (criteria.id !== undefined && product.id !== criteria.id)
+            return false;
+        if (
+            criteria.name !== undefined &&
+            !product.name.toLowerCase().includes(criteria.name.toLowerCase())
+        )
+            return false;
+        if (criteria.price !== undefined && product.price !== criteria.price)
+            return false;
+        if (
+            criteria.minPrice !== undefined &&
+            product.price < criteria.minPrice
+        )
+            return false;
+        if (
+            criteria.maxPrice !== undefined &&
+            product.price > criteria.maxPrice
+        )
+            return false;
+        if (criteria.stock !== undefined && product.stock !== criteria.stock)
+            return false;
+        if (
+            criteria.minStock !== undefined &&
+            product.stock < criteria.minStock
+        )
+            return false;
+        if (
+            criteria.maxStock !== undefined &&
+            product.stock > criteria.maxStock
+        )
+            return false;
+        if (
+            criteria.isBestSeller !== undefined &&
+            product.isBestSeller !== criteria.isBestSeller
+        )
+            return false;
+        if (
+            criteria.isNewArrival !== undefined &&
+            product.isNewArrival !== criteria.isNewArrival
+        )
+            return false;
+        return true;
+    });
+}
+
+export const products: IProduct[] = [
     {
         id: 1,
         name: "Labial Rojo Intenso",
@@ -15,6 +58,8 @@ export const productos: Producto[] = [
         stock: 100,
         description: "Labial de larga duración con un color rojo vibrante.",
         img: "labial-rojo-intenso.jpeg",
+        isBestSeller: true,
+        isNewArrival: true,
     },
     {
         id: 2,
@@ -23,6 +68,8 @@ export const productos: Producto[] = [
         stock: 150,
         description: "Labial con textura suave y un tono rosa natural.",
         img: "labial-rosa-suave.jpg",
+        isBestSeller: true,
+        isNewArrival: false,
     },
     {
         id: 3,
@@ -31,6 +78,8 @@ export const productos: Producto[] = [
         stock: 80,
         description: "Labial nude que combina con cualquier look.",
         img: "labial-nude-clasico.webp",
+        isBestSeller: false,
+        isNewArrival: true,
     },
     {
         id: 4,
@@ -39,6 +88,8 @@ export const productos: Producto[] = [
         stock: 60,
         description: "Labial en tono vino para un look sofisticado.",
         img: "labial-vino-elegante.jpg",
+        isBestSeller: false,
+        isNewArrival: false,
     },
     {
         id: 5,
@@ -47,6 +98,8 @@ export const productos: Producto[] = [
         stock: 120,
         description: "Labial con un color coral perfecto para el verano.",
         img: "labial-coral-vibrante.png",
+        isBestSeller: true,
+        isNewArrival: true,
     },
     {
         id: 6,
@@ -55,6 +108,8 @@ export const productos: Producto[] = [
         stock: 90,
         description: "Labial en tono marrón oscuro con acabado mate.",
         img: "labial-marron-chocolate.jpeg",
+        isBestSeller: true,
+        isNewArrival: false,
     },
     {
         id: 7,
@@ -63,6 +118,8 @@ export const productos: Producto[] = [
         stock: 70,
         description: "Labial en tono lila suave para un look fresco.",
         img: "labial-lila-delicado.webp",
+        isBestSeller: false,
+        isNewArrival: true,
     },
     {
         id: 8,
@@ -70,7 +127,9 @@ export const productos: Producto[] = [
         price: 11.49,
         stock: 130,
         description: "Labial de color fucsia brillante que destaca.",
-        img: "labial-fucsia-radiante.webp",
+        img: "labial-fucsia-radiante.jpg",
+        isBestSeller: false,
+        isNewArrival: false,
     },
     {
         id: 9,
@@ -79,6 +138,8 @@ export const productos: Producto[] = [
         stock: 110,
         description: "Labial en tono durazno para un look natural.",
         img: "labial-durazno-sutil.webp",
+        isBestSeller: true,
+        isNewArrival: true,
     },
     {
         id: 10,
@@ -87,6 +148,8 @@ export const productos: Producto[] = [
         stock: 55,
         description: "Labial de color rojo carmesí con un acabado cremoso.",
         img: "labial-rojo-carmesi.webp",
+        isBestSeller: true,
+        isNewArrival: false,
     },
     {
         id: 11,
@@ -95,6 +158,8 @@ export const productos: Producto[] = [
         stock: 95,
         description: "Labial en tono rosa fucsia con brillo duradero.",
         img: "labial-rosa-fucsia.jpg",
+        isBestSeller: false,
+        isNewArrival: true,
     },
     {
         id: 12,
@@ -103,6 +168,8 @@ export const productos: Producto[] = [
         stock: 65,
         description: "Labial cremoso en tono melocotón con hidratación extra.",
         img: "labial-melocoton-cremoso.jpg",
+        isBestSeller: false,
+        isNewArrival: false,
     },
     {
         id: 13,
@@ -111,6 +178,8 @@ export const productos: Producto[] = [
         stock: 85,
         description: "Labial en tono morado intenso con acabado mate.",
         img: "labial-morado-intenso.avif",
+        isBestSeller: true,
+        isNewArrival: true,
     },
     {
         id: 14,
@@ -119,6 +188,8 @@ export const productos: Producto[] = [
         stock: 140,
         description: "Labial en tono beige natural para uso diario.",
         img: "labial-beige-natural.jpeg",
+        isBestSeller: true,
+        isNewArrival: false,
     },
     {
         id: 15,
@@ -127,5 +198,7 @@ export const productos: Producto[] = [
         stock: 75,
         description: "Labial en tono terracota con un toque de brillo.",
         img: "labial-terracota.jpeg",
+        isBestSeller: false,
+        isNewArrival: true,
     },
 ];

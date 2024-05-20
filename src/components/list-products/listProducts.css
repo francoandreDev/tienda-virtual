@@ -1,4 +1,4 @@
-.catalogo {
+.list-products {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -14,12 +14,12 @@
     box-shadow: 0 2px 4px var(--color-shadow);
     padding: 20px;
     width: 250px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: translate 0.3s, box-shadow 0.2s;
     display: grid;
     place-items: center;
 
     &:hover {
-        transform: translateY(-5px);
+        translate: 0 -5px;
         box-shadow: 0 4px 8px var(--color-shadow-hover);
     }
 }

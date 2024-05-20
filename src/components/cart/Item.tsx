@@ -1,13 +1,13 @@
-import { Producto } from "./Cart";
+import { IProduct } from "../../data/exports";
 
 export function Item({
     item,
     cartItems,
     setCartItems,
 }: {
-    item: Producto;
-    cartItems: Producto[];
-    setCartItems: (items: Producto[]) => void;
+    item: IProduct;
+    cartItems: IProduct[];
+    setCartItems: (items: IProduct[]) => void;
 }) {
     const handleQuantityChange = (e: Event) => {
         const newQuantity = Number((e.target as HTMLInputElement).value);
@@ -22,7 +22,7 @@ export function Item({
 
     const updateQuantity = (id: number, newQuantity: number) => {
         const updatedCart = cartItems.map((item) =>
-            item.id === id ? { ...item, cantidad: newQuantity } : item
+            item.id === id ? { ...item, stock: newQuantity } : item
         );
         setCartItems(updatedCart);
         sessionStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -38,12 +38,12 @@ export function Item({
             <div className="cart-item-details">
                 <h4>{item.name}</h4>
                 <p>Precio Unitario: S/. {item.price}</p>
-                <p>Subtotal: S/. {item.price * item.cantidad}</p>
+                <p>Subtotal: S/. {item.price * item.stock}</p>
                 <div className="cart-item-quantity">
                     <p>Cantidad:</p>
                     <input
                         type="number"
-                        value={item.cantidad}
+                        value={item.stock}
                         min="0"
                         onChange={handleQuantityChange}
                     />

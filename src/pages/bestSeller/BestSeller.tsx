@@ -1,9 +1,15 @@
-import { BackButton, Banner, Catalogo, Footer, Nav } from "../../components/exports";
-import { productos } from "../../data/destacados/destacados";
+import {
+    BackButton,
+    Banner,
+    Footer,
+    ListProducts,
+    Nav,
+} from "../../components/exports";
+import { filterProducts, products } from "../../data/products";
 
-import "./home.css";
+import "./bestSeller.css";
 
-export function HomePage() {
+export function BestSellerPage() {
     return (
         <>
             <header className="top-header">
@@ -16,7 +22,11 @@ export function HomePage() {
                     </div>
                     <Banner />
                     <h2 className="title align-center">Más Vendidos</h2>
-                    <Catalogo productos={productos} />
+                    <ListProducts
+                        products={filterProducts(products, {
+                            isBestSeller: true,
+                        })}
+                    />
                 </div>
             </main>
             <Footer />

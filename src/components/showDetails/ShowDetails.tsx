@@ -1,33 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useState } from "preact/hooks";
-import { productos } from "../../data/productos/productos";
+import { products } from "../../data/exports";
 
 import "./showDetails.css";
 
-export type Producto = {
-    id: number;
-    name: string;
-    price: number;
-    stock: number;
-    description: string;
-    img: string;
-};
-
 export function ShowDetails() {
     const { id } = useParams();
-    const [cantidad, setCantidad] = useState<number>(1);
+    const [quantity, setQuantity] = useState<number>(1);
 
-    // Verificar que id no sea undefined y convertirlo a número
     const productId = id ? parseInt(id, 10) : null;
 
-    // Buscar el producto por id
     const product =
         productId !== null
-            ? productos.find((p) => p.id === productId)
+            ? products.find((p) => p.id === productId)
             : undefined;
 
     function handleAddToCart() {
-        if (cantidad <= 0) {
+        if (quantity <= 0) {
             alert("La cantidad debe ser positiva y mayor que cero");
             return;
         }
@@ -38,13 +27,13 @@ export function ShowDetails() {
         );
 
         if (productIndex !== -1) {
-            currentCart[productIndex].cantidad += cantidad;
+            currentCart[productIndex].stock += quantity;
         } else {
-            currentCart.push({ ...product, cantidad });
+            currentCart.push({ ...product, stock: quantity });
         }
 
         sessionStorage.setItem("cart", JSON.stringify(currentCart));
-        alert(`${cantidad} ${product?.name}(s) añadido(s) al carrito!`);
+        alert(`${quantity} ${product?.name}(s) añadido(s) al carrito!`);
     }
 
     if (!product) {
@@ -67,16 +56,16 @@ export function ShowDetails() {
             />
             <p className="description">{product.description}</p>
             <span className="flex-space">
-                <p className="price">S/. {product.price * cantidad}</p>
+                <p className="price">S/. {product.price * quantity}</p>
                 <span className="stock">
                     <input
                         type="number"
                         aria-label={"stock-" + product.id + "input"}
                         className={"quantity"}
                         onChange={(e) =>
-                            setCantidad(Number(e.currentTarget.value))
+                            setQuantity(Number(e.currentTarget.value))
                         }
-                        value={cantidad}
+                        value={quantity}
                         min="1"
                         max={product.stock}
                     />

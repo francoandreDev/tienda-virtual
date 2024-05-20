@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
 import { BackButton } from "../../components/exports";
 
-import "./contacto.css";
+import "./contact.css";
 
 interface FormData {
     firstName: string;
@@ -11,7 +11,7 @@ interface FormData {
     cv: File | null;
 }
 
-export function ContactoPage() {
+export function ContactPage() {
     const [formData, setFormData] = useState<FormData>({
         firstName: "",
         lastName: "",

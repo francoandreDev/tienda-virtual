@@ -46,6 +46,12 @@
     transition: transform 0.3s ease;
 }
 
+@media (min-width: 769px) and (max-width: 1023px) {
+    .text-link {
+        display: none;
+    }
+}
+
 /* Media queries for responsive design */
 @media (max-width: 768px) {
     .navbar {

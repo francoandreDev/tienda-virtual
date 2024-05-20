@@ -1,20 +1,11 @@
 import { useEffect, useState } from "preact/hooks";
 import { Item } from "./Item";
+import { IProduct } from "../../data/exports";
 
 import "./cart.css";
 
-export type Producto = {
-    id: number;
-    name: string;
-    price: number;
-    stock: number;
-    description: string;
-    img: string;
-    cantidad: number;
-};
-
-export function Carrito() {
-    const [cartItems, setCartItems] = useState<Producto[]>([]);
+export function Cart() {
+    const [cartItems, setCartItems] = useState<IProduct[]>([]);
 
     useEffect(() => {
         const cart = JSON.parse(sessionStorage.getItem("cart") || "[]");
@@ -29,7 +20,7 @@ export function Carrito() {
 
     const calculateTotal = () => {
         return cartItems.reduce(
-            (total, item) => total + item.price * item.cantidad,
+            (total, item) => total + item.price * item.stock,
             0
         );
     };

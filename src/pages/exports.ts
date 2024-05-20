@@ -1,15 +1,17 @@
-import { HomePage } from "./home/Home";
+import { ArrivalsPage } from "./arrivals/Arrivals";
 import { CartPage } from "./cart/Cart";
 import { ProductDetailPage } from "./productDetail/ProductDetail";
 import { ProductPage } from "./product/Product";
 import { ErrorPage } from "./error/Error";
-import { ContactoPage } from "./contacto/Contacto";
+import { ContactPage } from "./contact/Contact";
+import { BestSellerPage } from "./bestSeller/BestSeller";
 
 export {
     ErrorPage,
-    HomePage,
+    ArrivalsPage,
+    BestSellerPage,
     CartPage,
     ProductDetailPage,
     ProductPage,
-    ContactoPage,
+    ContactPage,
 };

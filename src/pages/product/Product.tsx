@@ -1,9 +1,23 @@
-import { BackButton, Catalogo, Footer, Nav } from "../../components/exports";
-import { productos } from "../../data/productos/productos";
+import { useState } from "preact/hooks";
+import {
+    BackButton,
+    Banner,
+    Footer,
+    ListProducts,
+    Nav,
+    SearchBar,
+} from "../../components/exports";
+import { IProduct, products, filterProducts } from "../../data/exports";
 
 import "./product.css";
 
 export function ProductPage() {
+    const [showProducts, setShowProducts] = useState<IProduct[]>(products);
+
+    function handleSearch(query: string) {
+        setShowProducts(filterProducts(products, { name: query }));
+    }
+
     return (
         <>
             <header className="top-header">
@@ -14,8 +28,12 @@ export function ProductPage() {
                     <div className="back-button">
                         <BackButton />
                     </div>
-                    <h2 className="title align-center">Productos</h2>
-                    <Catalogo productos={productos} />
+                    <Banner />
+                    <h2 className="title align-center">Catálogo</h2>
+                    <span className="flex-center">
+                        <SearchBar onSearch={handleSearch} />
+                    </span>
+                    <ListProducts products={showProducts} />
                 </div>
             </main>
             <Footer />

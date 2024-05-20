@@ -1,0 +1,17 @@
+.banner {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+    position: relative;
+    top: -1rem;
+    max-height: 50svh;
+    background-color: var(--color-auxiliary);
+    background-size: cover;
+    background-position: top 5% center;
+    background-repeat: no-repeat;
+    background-image: url("../../../public/banner.jpg");
+    background-attachment: fixed;
+}

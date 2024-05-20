@@ -1,20 +1,25 @@
 import { createBrowserRouter } from "react-router-dom";
 import {
-    HomePage,
+    ArrivalsPage,
     CartPage,
     ProductDetailPage,
     ProductPage,
     ErrorPage,
-    ContactoPage,
+    ContactPage,
+    BestSellerPage,
 } from "../pages/exports.ts";
 
 export const router = createBrowserRouter([
     {
-        path: "/",
-        element: <HomePage />,
+        path: "/nuevos-productos",
+        element: <ArrivalsPage />,
     },
     {
-        path: "/productos",
+        path: "/mas-vendidos",
+        element: <BestSellerPage />,
+    },
+    {
+        path: "/",
         element: <ProductPage />,
     },
     {
@@ -27,7 +32,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/contacto",
-        element: <ContactoPage />,
+        element: <ContactPage />,
     },
     {
         path: "*",
