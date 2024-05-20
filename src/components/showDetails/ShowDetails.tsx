@@ -20,6 +20,11 @@ export function ShowDetails() {
             alert("La cantidad debe ser positiva y mayor que cero");
             return;
         }
+        if (product)
+            if (quantity > product.stock) {
+                alert("No hay suficiente stock");
+                return;
+            }
 
         const currentCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
         const productIndex = currentCart.findIndex(
@@ -48,23 +53,22 @@ export function ShowDetails() {
 
     return (
         <div className="show-details">
-            <h3 className="title">{product.name}</h3>
-            <div class="relative">
+            <div className="relative image-wrapper">
+                <img
+                    src={"/productos/" + product.img}
+                    alt={product.name}
+                    className="image"
+                />
                 <span className="flex icons absolute">
                     {product.isBestSeller && <i class="fa-solid fa-fire"></i>}
                     {product.isNewArrival && (
                         <i class="fa-solid fa-bell-concierge"></i>
                     )}
                 </span>
-                <img
-                    src={"/productos/" + product.img}
-                    alt={product.name}
-                    className="image"
-                />
             </div>
-            <p className="description">{product.description}</p>
-            <span className="flex-space">
-                <p className="price">S/. {product.price * quantity}</p>
+            <div className="content">
+                <h3 className="title text-left">{product.name}</h3>
+                <p className="description text-left">{product.description}</p>
                 <span className="stock">
                     <input
                         type="number"
@@ -80,14 +84,17 @@ export function ShowDetails() {
                     />
                     /{product.stock}
                 </span>
-            </span>
-            <button
-                className="button rounded inline full-width flex-center"
-                onClick={handleAddToCart}
-            >
-                <i class="fa-solid fa-cart-plus"></i>
-                <p>Añadir al carrito</p>
-            </button>
+                <div className="flex-space">
+                    <button
+                        className="button inline rounded add-cart"
+                        onClick={handleAddToCart}
+                    >
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <p>Añadir al carrito</p>
+                    </button>
+                    <p className="price">S/. {product.price * quantity}</p>
+                </div>
+            </div>
         </div>
     );
 }
