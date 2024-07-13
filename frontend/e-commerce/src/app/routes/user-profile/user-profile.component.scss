@@ -1,0 +1,25 @@
+.profile-container {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+
+	p {
+		margin-bottom: 10px;
+	}
+
+	strong {
+		font-weight: bold;
+	}
+
+	.no-user-info {
+		font-style: italic;
+		color: #888;
+		margin-top: 10px;
+	}
+}
+
+.profile-title {
+	text-align: center;
+	margin-bottom: 20px;
+}

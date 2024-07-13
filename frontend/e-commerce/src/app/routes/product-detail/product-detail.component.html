@@ -1,0 +1,35 @@
+<article class="product">
+	<section class="col">
+		<img
+			[src]="product.image"
+			[alt]="product.name"
+			(error)="onImageError($event)"
+			class="image-col"
+		/>
+	</section>
+	<section class="col">
+		<h2>{{ product.name }}</h2>
+		<p>{{ product.description }}</p>
+
+		@if(product.discount > 0) {
+		<p class="discount-price">
+			S/. {{ product.price * (1 - product.discount) | round }}
+		</p>
+		} @else {
+		<p class="normal-price">S/. {{ product.price | round }}</p>
+		}
+		<span
+			><input
+				type="number"
+				(change)="updateQuantity($event)"
+				value="{{ quantity }}"
+			/>
+			<p>Stock: {{ product.stock }}</p></span
+		>
+		<p>Total price S/. {{ totalPrice | round }}</p>
+		<span class="row">
+			<div class="button"><app-back-button></app-back-button></div>
+			<button (click)="addToCart()">Add to cart</button>
+		</span>
+	</section>
+</article>

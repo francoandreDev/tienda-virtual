@@ -1,0 +1,33 @@
+.header {
+	position: sticky;
+	top: 0;
+	z-index: 5;
+}
+
+.menu {
+    display: none;
+}
+
+@media (width < 900px) {
+    .menu {
+        display: block;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background-color: rgba(0, 0, 0, 0.85);
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .hide {
+        display: none;
+    }
+}

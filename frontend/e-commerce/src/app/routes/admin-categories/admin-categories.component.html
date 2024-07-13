@@ -1,0 +1,31 @@
+<div class="back"><app-back-button [className]="'back'"></app-back-button></div>
+<h2 class="subtitle">Categorías</h2>
+<button (click)="addCategory()" class="add-item">Añadir categoría</button>
+@if(showForm) {
+<form #form="ngForm" (ngSubmit)="addNewCategory(form)">
+    <input [(ngModel)]="newCategoryName" name="categoryName" placeholder="Nombre de la categoría" required />
+    <button type="submit">Guardar</button>
+</form>
+}
+@if(showEditForm && currentCategory) {
+<form (ngSubmit)="updateCategory()">
+    <input [(ngModel)]="currentCategory.name" name="editCategoryName" placeholder="Nombre de la categoría" required />
+    <div class="actions-confirm">
+        <button type="submit">Actualizar</button>
+        <button (click)="cancelButton()" type="button">Cancelar</button>
+    </div>
+</form>
+}
+<section class="list">
+    @for(category of categories; track category.id) {
+    @if (category.id) {
+    <span class="inline">
+        <b class="category-name">{{ category.name }}</b>
+        <span class="inline">
+            <button (click)="editCategory(category)" class="edit-item">Editar</button>
+            <button (click)="deleteCategory(category.id)" class="delete-item">Eliminar</button>
+        </span>
+    </span>
+    }
+    }
+</section>

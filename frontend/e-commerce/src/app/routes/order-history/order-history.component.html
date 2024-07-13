@@ -1,0 +1,18 @@
+<div class="back">
+    <app-back-button></app-back-button>
+</div>
+<h2 class="subtitle">Mi Carrito</h2>
+
+<section class="list">
+    <h3 class="subtitle">Lista de órdenes</h3>
+    @for(order of orders; track order.id) {
+    @if (order.id) {
+    <article class="order">
+        <b class="name">{{ order.product.name }}</b>
+        <span class="details">
+            S/. {{ order.price | round }} x {{ order.quantity }}
+        </span>
+    </article>
+    }
+    }
+</section>

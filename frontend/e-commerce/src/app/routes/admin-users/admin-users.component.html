@@ -1,0 +1,73 @@
+<div class="back"><app-back-button [className]="'back'"></app-back-button></div>
+<h2 class="subtitle">Usuarios</h2>
+<button (click)="addUser()" class="add-item">Añadir usuario</button>
+
+<!-- Formulario para agregar nuevo usuario -->
+@if(showForm){
+<form #form="ngForm" (ngSubmit)="addNewUser(form)">
+    <input [(ngModel)]="newUser.username" name="username" placeholder="Nombre de usuario" required />
+    <input [(ngModel)]="newUser.password" name="password" placeholder="Contraseña" required />
+    <select [(ngModel)]="newUser.role" name="role" required>
+        <option value="USER">Usuario</option>
+        <option value="ADMIN">Administrador</option>
+    </select>
+    <input [(ngModel)]="newUser.city" name="city" placeholder="Ciudad" required />
+    <input [(ngModel)]="newUser.country" name="country" placeholder="País" required />
+    <input [(ngModel)]="newUser.email" name="email" placeholder="Correo electrónico" type="email" required />
+    <input [(ngModel)]="newUser.phone" name="phone" placeholder="Teléfono" required />
+    <input [(ngModel)]="newUser.balance" name="balance" placeholder="Saldo" type="number" required />
+    <button type="submit">Guardar</button>
+</form>
+}
+
+<!-- Formulario para editar usuario -->
+@if(showEditForm && currentUser){
+<form (ngSubmit)="updateUser()">
+    <input [(ngModel)]="currentUser.username" name="editUsername" placeholder="Nombre de usuario" required />
+    <input [(ngModel)]="currentUser.password" name="editPassword" placeholder="Contraseña" required />
+    <select [(ngModel)]="currentUser.role" name="editRole" required>
+        <option value="USER">Usuario</option>
+        <option value="ADMIN">Administrador</option>
+    </select>
+    <input [(ngModel)]="currentUser.city" name="editCity" placeholder="Ciudad" required />
+    <input [(ngModel)]="currentUser.country" name="editCountry" placeholder="País" required />
+    <input [(ngModel)]="currentUser.email" name="editEmail" placeholder="Correo electrónico" type="email" required />
+    <input [(ngModel)]="currentUser.phone" name="editPhone" placeholder="Teléfono" required />
+    <input [(ngModel)]="currentUser.balance" name="editBalance" placeholder="Saldo" type="number" required />
+    <div class="actions-confirm">
+        <button type="submit" class="mb-05">Actualizar</button>
+        <button (click)="cancelEdit()" type="button" class="cancel">Cancelar</button>
+    </div>
+</form>
+}
+
+<!-- Lista de usuarios dividida por roles -->
+<section class="list">
+    <h3>Lista de usuarios</h3>
+    @for(user of users; track user.id) {
+    @if (user.role === 'CLIENT') {
+    <div class="inline">
+        <b class="item-name">{{ user.username }}</b>
+        <span class="inline">
+            <button (click)="editUser(user)" class="edit-item">Editar</button>
+            <button (click)="deleteUser(user.id)" class="delete-item">Eliminar</button>
+        </span>
+    </div>
+    }
+    }
+</section>
+
+<section class="list">
+    <h3>Lista de Administradores</h3>
+    @for(user of users; track user.id) {
+    @if (user.role === 'ADMIN') {
+    <div class="inline">
+        <b class="item-name">{{ user.username }}</b>
+        <span class="inline">
+            <button (click)="editUser(user)" class="edit-item">Editar</button>
+            <button (click)="deleteUser(user.id)" class="delete-item">Eliminar</button>
+        </span>
+    </div>
+    }}
+
+</section>

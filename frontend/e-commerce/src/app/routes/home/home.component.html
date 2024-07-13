@@ -1,0 +1,33 @@
+<header>
+	<app-banner></app-banner>
+</header>
+<section class="product-list">
+	@for (product of products; track product.id) { @if (product.id &&
+	product.stock > 0) {
+	<article [class]="'product-list-item ' + product.category.name">
+		<h3>{{ product.name }}</h3>
+		<img
+			[src]="product.image"
+			alt="{{ product.name }}"
+			(error)="onImageError($event)"
+			class="product-image"
+		/>
+		@if(product.discount>0) {
+		<p class="discount">
+			Discount: {{ product.discount * 100 | number : "1.0-0" }}%
+		</p>
+		<p class="discount-price">
+			S/. {{ product.price * (1 - product.discount) | round }}
+		</p>
+		} @else {
+		<p class="normal-price">S/. {{ product.price | round }}</p>
+		}
+		<button (click)="goToProductDetail(product)" class="products-button">
+			View Details
+		</button>
+		<button (click)="addToCart($event, product)" class="products-button">
+			Add to cart
+		</button>
+	</article>
+	} }
+</section>

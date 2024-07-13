@@ -1,0 +1,54 @@
+<nav class="navbar">
+	<section>
+		<section class="logo icon-text-reverse" (click)="goToAdmin()">
+			<i class="icon fa-solid {{ showAdmin ? 'fa-lock-open': 'fa-lock' }}"></i>
+			<p class="text">Admin</p>
+		</section>
+		<section class="links">
+			<span class="icon-text">
+				<i class="icon fa-solid fa-house"></i>
+				<div class="text">
+					<app-link text="Inicio" route="/productos"></app-link>
+				</div>
+			</span>
+			<span class="icon-text">
+				<i class="icon fa-solid fa-cart-shopping"></i>
+				<div class="text">
+					<app-link text="Carrito" route="/carrito"></app-link>
+				</div>
+			</span>
+			<span class="icon-text">
+				<i class="icon fa-solid fa-clock-rotate-left"></i>
+				<div class="text">
+					<app-link text="Historial" route="/historial"></app-link>
+				</div>
+			</span>
+			<span class="icon-text">
+				<i class="icon fa-solid fa-user"></i>
+				<div class="text">
+					<app-link text="Perfil" route="/perfil"></app-link>
+				</div>
+			</span>
+		</section>
+	</section>
+	<section class="session">
+		<span class="icon-text">
+			<i class="icon fa-solid fa-right-from-bracket"></i>
+			<div class="text">
+				<app-link text="Iniciar Sesión" route="/iniciar-sesion"></app-link>
+			</div>
+		</span>
+		<span class="icon-text">
+			<i class="icon fa-solid fa-user-plus"></i>
+			<div class="text">
+				<app-link text="Nueva Cuenta" route="/crear-cuenta"></app-link>
+			</div>
+		</span>
+		<span class="icon-text">
+			<i class="icon fa-solid fa-right-from-bracket" style="rotate: 180deg"></i>
+			<div class="text">
+				<app-link text="Cerrar Sesión" route="/" (click)="logout()"></app-link>
+			</div>
+		</span>
+	</section>
+</nav>

@@ -1,0 +1,57 @@
+/* Contenedor principal */
+.list {
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidad */
+	max-width: 800px; /* Ancho máximo para centrar el contenido */
+}
+
+/* Títulos */
+.subtitle {
+	text-align: left;
+	font-size: 1.8em;
+	margin-bottom: 20px;
+	font-weight: bold;
+	border-bottom: 2px solid #ddd; /* Línea inferior para separar */
+	padding-bottom: 10px;
+}
+
+/* Ítems de órdenes */
+.order {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #eee; /* Línea divisoria para cada orden */
+}
+
+.name {
+	font-weight: bold;
+	margin-right: 20px;
+	font-size: 1.2em;
+}
+
+.details {
+	font-size: 1em;
+	color: #777;
+}
+
+/* Espaciado y alineación */
+.order:last-child {
+	border-bottom: none; /* Sin línea en el último ítem */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.order {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.name,
+	.details {
+		margin-right: 0;
+		margin-bottom: 5px;
+	}
+}

@@ -1,0 +1,20 @@
+<div class="back">
+    <app-back-button></app-back-button>
+</div>
+
+<h2 class="profile-title subtitle">Perfil de Usuario</h2>
+
+<div class="profile-container">
+    @if (currentUser) {
+    <div>
+        <p><strong>Nombre de usuario:</strong> {{ currentUser.username }}</p>
+        <p><strong>Email:</strong> {{ currentUser.email }}</p>
+        <p><strong>Ciudad:</strong> {{ currentUser.city }}</p>
+        <p><strong>País:</strong> {{ currentUser.country }}</p>
+        <p><strong>Teléfono:</strong> {{ currentUser.phone }}</p>
+    </div>
+
+    }@else{
+    <p class="no-user-info">No se ha encontrado información del usuario.</p>
+    }
+</div>

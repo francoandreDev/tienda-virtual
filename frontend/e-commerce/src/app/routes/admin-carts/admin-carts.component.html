@@ -1,0 +1,67 @@
+<div class="back"><app-back-button [className]="'back'"></app-back-button></div>
+<h2 class="subtitle center">Carritos</h2>
+
+<!-- Campo de búsqueda -->
+<div class="search-container">
+    <input type="text" placeholder="Buscar usuario" [(ngModel)]="searchTerm" (ngModelChange)="searchUsers()"
+        class="search" />
+</div>
+
+<section class="list">
+    <h3 class="subtitle center">Lista de clientes con carrito</h3>
+    @for(user of filteredUsers; track user.id) {
+    @if (user.id && orders[user.id] && user.role === 'CLIENT') {
+    <h3 class="center">{{ user.username }}</h3>
+    <div class="list">
+        @for(order of orders[user.id]; track order.id){
+        @if (order.id) {
+        <h4>Lista de ordenes</h4>
+        <div class="inline">
+            <b class="item-name">{{ order.product.name }}</b>
+            <span class="inline">
+                <button (click)="editOrder(order)" class="edit-item">Editar</button>
+                <button (click)="deleteOrder(order.id, user.id)" class="delete-item">Eliminar</button>
+            </span>
+        </div>
+        }
+        }
+    </div>
+    }
+    }
+</section>
+
+<section class="list">
+    <h3 class="subtitle center">Lista de admins con carrito</h3>
+    @for(user of filteredUsers; track user.id) {
+    @if (user.id && orders[user.id] && user.role === 'ADMIN') {
+    <h3 class="center">{{ user.username }}</h3>
+    <div class="list">
+        @for(order of orders[user.id]; track order.id){
+        @if (order.id) {
+        <h4>Lista de ordenes</h4>
+        <div class="inline">
+            <b class="item-name">{{ order.product.name }}</b>
+            <span class="inline">
+                <button (click)="editOrder(order)" class="edit-item">Editar</button>
+                <button (click)="deleteOrder(order.id, user.id)" class="delete-item">Eliminar</button>
+            </span>
+        </div>
+        }
+        }
+    </div>
+    }
+    }
+</section>
+
+<!-- Formulario para editar orden -->
+@if(showEditOrderForm && currentOrder){
+<form (ngSubmit)="updateOrder()">
+    <input [(ngModel)]="currentOrder.product.name" name="editProductName" placeholder="Nombre del producto" required />
+    <input [(ngModel)]="currentOrder.quantity" name="editQuantity" placeholder="Cantidad" type="number" required />
+    <input [(ngModel)]="currentOrder.price" name="editPrice" placeholder="Precio" type="number" required />
+    <div class="actions-confirm">
+        <button type="submit" class="mb-05">Guardar</button>
+        <button (click)="cancelCartOrder()" type="button" class="cancel">Cancelar</button>
+    </div>
+</form>
+}

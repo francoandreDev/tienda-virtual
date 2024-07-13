@@ -1,0 +1,62 @@
+package pack.orders;
+
+import org.springframework.stereotype.Component;
+
+import pack.products.Product;
+import pack.products.ProductDTO;
+import pack.users.User;
+import pack.users.UserDTO;
+
+
+@Component
+public class OrderMapper {
+
+    public Order toEntity(OrderRequestDTO orderRequestDTO, User user, Product product) {
+        Order order = new Order();
+        order.setPrice(orderRequestDTO.getPrice());
+        order.setQuantity(orderRequestDTO.getQuantity());
+        order.setDate(orderRequestDTO.getDate());
+        order.setStatus(orderRequestDTO.getStatus());
+        order.setUser(user);
+        order.setProduct(product);
+        return order;
+    }
+
+    public OrderDTO toResponse(Order order) {
+    	UserDTO userDTO = new UserDTO();
+    	
+        userDTO.setId(order.getUser().getId());
+        userDTO.setUsername(order.getUser().getUsername());
+        userDTO.setPassword(order.getUser().getPassword());
+        userDTO.setRole(order.getUser().getRole());
+        userDTO.setCity(order.getUser().getCity());
+        userDTO.setCountry(order.getUser().getCountry());
+        userDTO.setEmail(order.getUser().getEmail());
+        userDTO.setPhone(order.getUser().getPhone());
+        userDTO.setBalance(order.getUser().getBalance());
+        
+        ProductDTO productDTO = new ProductDTO();
+        
+        productDTO.setId(productDTO.getId());
+        productDTO.setName(productDTO.getName());
+        productDTO.setDescription(productDTO.getDescription());
+        productDTO.setPrice(productDTO.getPrice());
+        productDTO.setStock(productDTO.getStock());
+        productDTO.setDiscount(productDTO.getDiscount());
+        productDTO.setImage(productDTO.getImage());
+        productDTO.setCategory(productDTO.getCategory());
+        
+        OrderDTO orderDTO = new OrderDTO();
+        
+        orderDTO.setId(order.getId());
+        orderDTO.setPrice(order.getPrice());
+        orderDTO.setQuantity(order.getQuantity());
+        orderDTO.setDate(order.getDate());
+        orderDTO.setStatus(order.getStatus());
+        orderDTO.setUser(userDTO);
+        orderDTO.setProduct(productDTO);
+        
+        return orderDTO;
+        
+    }
+}

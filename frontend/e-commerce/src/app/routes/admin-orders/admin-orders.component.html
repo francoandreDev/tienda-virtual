@@ -1,0 +1,67 @@
+<div class="back"><app-back-button [className]="'back'"></app-back-button></div>
+<h2 class="subtitle">Órdenes</h2>
+<button (click)="addOrder()" class="add-item">Añadir orden</button>
+
+<!-- Formulario para agregar nueva orden -->
+@if(showForm){
+<form #form="ngForm" (ngSubmit)="addNewOrder(form)">
+	<select [(ngModel)]="newOrder.user.id" name="userId" required>
+		<option *ngFor="let user of users" [value]="user.id">
+			{{ user.username }}
+		</option>
+	</select>
+	<select [(ngModel)]="newOrder.product.id" name="productId" required>
+		<option *ngFor="let product of products" [value]="product.id">
+			{{ product.name }}
+		</option>
+	</select>
+	<input [(ngModel)]="newOrder.quantity" name="quantity" placeholder="Cantidad" type="number" required />
+	<input [(ngModel)]="newOrder.price" name="price" placeholder="Precio" type="number" required />
+	<input [(ngModel)]="newOrder.date" name="date" placeholder="Fecha" type="date" required />
+	<input [(ngModel)]="newOrder.status" name="status" placeholder="Estado" required />
+	<button type="submit">Guardar</button>
+</form>
+}
+
+<!-- Formulario para editar orden -->
+@if(showEditForm && currentOrder){
+<form (ngSubmit)="updateOrder()">
+	<select [(ngModel)]="currentOrder.user.id" name="editUserId" required>
+		@for(user of users; track user.id){ @if (user.id) {
+		<option [value]="user.id">{{ user.username }}</option>
+		}}
+	</select>
+	<select [(ngModel)]="currentOrder.product.id" name="editProductId" required>
+		@for(product of products; track product.id){ @if (product.id) {
+		<option [value]="product.id">{{ product.name }}</option>
+		}}
+	</select>
+	<input [(ngModel)]="currentOrder.quantity" name="editQuantity" placeholder="Cantidad" type="number" required />
+	<input [(ngModel)]="currentOrder.price" name="editPrice" placeholder="Precio" type="number" required />
+	<input [(ngModel)]="currentOrder.date" name="editDate" placeholder="Fecha" type="date" required />
+	<input [(ngModel)]="currentOrder.status" name="editStatus" placeholder="Estado" required />
+	<div class="actions-confirm">
+		<button type="submit" class="mb-05">Actualizar</button>
+		<button (click)="cancelEdit()" type="button" class="cancel">
+			Cancelar
+		</button>
+	</div>
+</form>
+}
+
+<!-- Lista de órdenes -->
+<section class="list">
+	@for(order of orders; track order.id){ @if (order.id &&
+	order.status.toLocaleLowerCase() === 'pending') {
+	<div class="inline">
+		<b class="item-name">{{ order.user.username }}</b>
+		<b class="item-name">{{ order.product.name }}</b>
+		<span class="inline">
+			<button (click)="editOrder(order)" class="edit-item">Editar</button>
+			<button (click)="deleteOrder(order.id)" class="delete-item">
+				Eliminar
+			</button>
+		</span>
+	</div>
+	} }
+</section>

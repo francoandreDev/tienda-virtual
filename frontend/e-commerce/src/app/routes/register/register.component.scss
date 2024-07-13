@@ -1,0 +1,60 @@
+// Estilos mejorados para el formulario de registro en Angular
+
+.register-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	padding: 20px;
+	box-sizing: border-box;
+  }
+
+  .register-form {
+	width: 100%;
+	max-width: 400px;
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Sombra ligera para el formulario
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+  }
+
+  .register-input {
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 15px;
+	border-radius: 4px;
+	font-size: 16px;
+	box-sizing: border-box;
+  }
+
+  .register-button {
+	padding: 12px;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 20px;
+  }
+
+  .register-title {
+	font-size: 24px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-weight: bold;
+  }
+
+  .register-subtitle {
+	font-size: 16px;
+	margin-bottom: 20px;
+	text-align: center;
+  }
+
+  .register-note {
+	font-size: 14px;
+	text-align: center;
+	margin-top: 20px;
+  }

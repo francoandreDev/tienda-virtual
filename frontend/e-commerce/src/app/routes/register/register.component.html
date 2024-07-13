@@ -1,0 +1,73 @@
+<section class="register-container">
+	<form
+		[formGroup]="registerForm"
+		(ngSubmit)="onSubmit()"
+		class="register-form"
+	>
+		<h2 class="register-title">Register</h2>
+		<p class="register-subtitle">Create a new account</p>
+		<input
+			type="text"
+			name="username"
+			placeholder="nombre de usuario"
+			formControlName="username"
+			class="register-input"
+			required
+		/>
+		<input
+			type="password"
+			name="password"
+			placeholder="contraseña"
+			autocomplete="off"
+			formControlName="password"
+			class="register-input"
+			required
+		/>
+		<input
+			type="text"
+			name="email"
+			placeholder="correo"
+			formControlName="email"
+			class="register-input"
+		/>
+		<input
+			type="text"
+			name="city"
+			placeholder="ciudad"
+			formControlName="city"
+			class="register-input"
+		/>
+		<input
+			type="text"
+			name="country"
+			placeholder="país"
+			formControlName="country"
+			class="register-input"
+		/>
+		<input
+			type="text"
+			name="phone"
+			placeholder="celular"
+			formControlName="phone"
+			class="register-input"
+		/>
+		<input
+			type="number"
+			name="balance"
+			placeholder="saldo"
+			formControlName="balance"
+			class="register-input"
+		/>
+		<div class="register-button"><app-back-button></app-back-button></div>
+		<button
+			type="submit"
+			[disabled]="registerForm.invalid"
+			class="register-button"
+		>
+			Register
+		</button>
+		<p class="register-note">
+			By creating an account, you agree to our Terms & Conditions.
+		</p>
+	</form>
+</section>

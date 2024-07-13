@@ -1,0 +1,56 @@
+<div class="back"><app-back-button [className]="'back'"></app-back-button></div>
+<h2 class="subtitle">Productos</h2>
+<button (click)="addProduct()" class="add-item">Añadir producto</button>
+@if(showForm) {
+<form #form="ngForm" (ngSubmit)="addNewProduct(form)">
+    <input [(ngModel)]="newProduct.name" name="productName" placeholder="Nombre del producto" required />
+    <input [(ngModel)]="newProduct.description" name="productDescription" placeholder="Descripción" required />
+    <input [(ngModel)]="newProduct.price" name="productPrice" placeholder="Precio" type="number" required />
+    <input [(ngModel)]="newProduct.image" name="productImage" placeholder="URL de la imagen" required />
+    <input [(ngModel)]="newProduct.stock" name="productStock" placeholder="Stock" type="number" required />
+    <input [(ngModel)]="newProduct.discount" name="productDiscount" placeholder="Descuento" type="number" required />
+    <select [(ngModel)]="newProduct.category.id" name="productCategoryId" required>
+        @for(category of categories; track category.id) {
+        @if (category.id) {
+        <option [value]="category.id">{{category.name}}</option>
+        }
+        }
+    </select>
+    <button type="submit">Guardar</button>
+</form>
+}
+@if(showEditForm && currentProduct) {
+<form (ngSubmit)="updateProduct()">
+    <input [(ngModel)]="currentProduct.name" name="editProductName" placeholder="Nombre del producto" required />
+    <input [(ngModel)]="currentProduct.description" name="editProductDescription" placeholder="Descripción" required />
+    <input [(ngModel)]="currentProduct.price" name="editProductPrice" placeholder="Precio" type="number" required />
+    <input [(ngModel)]="currentProduct.image" name="editProductImage" placeholder="URL de la imagen" required />
+    <input [(ngModel)]="currentProduct.stock" name="editProductStock" placeholder="Stock" type="number" required />
+    <input [(ngModel)]="currentProduct.discount" name="editProductDiscount" placeholder="Descuento" type="number"
+        required />
+    <select [(ngModel)]="currentProduct.category.id" name="editProductCategoryId" required>
+        @for(category of categories; track category.id) {
+        @if (category.id) {
+        <option [value]="category.id">{{category.name}}</option>
+        }
+        }
+    </select>
+    <div class="actions-confirm">
+        <button type="submit" class="mb-05">Actualizar</button>
+        <button (click)="cancelButton()" type="button">Cancelar</button>
+    </div>
+</form>
+}
+<section class="list">
+    @for(product of products; track product.id) {
+    @if (product.id) {
+    <span class="inline">
+        <b class="product-name">{{ product.name }}</b>
+        <span class="inline">
+            <button (click)="editProduct(product)" class="edit-item">Editar</button>
+            <button (click)="deleteProduct(product.id)" class="delete-item">Eliminar</button>
+        </span>
+    </span>
+    }
+    }
+</section>
